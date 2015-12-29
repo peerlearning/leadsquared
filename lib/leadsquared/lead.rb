@@ -39,16 +39,16 @@ module Leadsquared
       url = url_with_service("Lead.Create")
       body = [
         {
-          "Attribute": "EmailAddress",
-          "Value": email
+          "Attribute" => "EmailAddress",
+          "Value" => email
         },
         {
-          "Attribute": "FirstName",
-          "Value": first_name
+          "Attribute" => "FirstName",
+          "Value" => first_name
         },
         {
-          "Attribute": "LastName",
-          "Value": last_name
+          "Attribute" => "LastName",
+          "Value" => last_name
         }
       ]
       response = connection.post(url, {}, body.to_json)
@@ -68,24 +68,24 @@ module Leadsquared
       url = url_with_service("Lead.CreateOrUpdate")
       body = [
         {
-          "Attribute": "EmailAddress",
-          "Value": email
+          "Attribute" => "EmailAddress",
+          "Value" => email
         },
         {
-          "Attribute": "FirstName",
-          "Value": first_name
+          "Attribute" => "FirstName",
+          "Value" => first_name
         },
         {
-          "Attribute": "LastName",
-          "Value": last_name
+          "Attribute" => "LastName",
+          "Value" => last_name
         },
         {
-          "Attribute": "Phone",
-          "Value": phone
+          "Attribute" => "Phone",
+          "Value" => phone
         },
         {
-          "Attribute": "SearchBy",
-          "Value": search_by
+          "Attribute" => "SearchBy",
+          "Value" => search_by
         }
       ]
       response = connection.post(url, {}, body.to_json)
