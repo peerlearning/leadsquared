@@ -33,38 +33,37 @@ module Leadsquared
       parsed_response["Message"]["Id"]
     end
 
-    def create_lead_activity(lead_id, event_id, notes = nil)
+    def create_lead_activity(lead_id, event_id, notes = nil, activity_utc_time = nil)
       url = url_with_service("Create")
       body = {
         "RelatedProspectId" => lead_id,
         "ActivityEvent"     => event_id,
         "ActivityNote"      => notes,
-        "ActivityDateTime"  => current_utc_time
+        "ActivityDateTime"  => activity_utc_time || current_utc_time
       }
       response = connection.post(url, {leadId: lead_id}, body.to_json)
       parsed_response = handle_response response
       parsed_response["Message"]["Id"]
     end
 
-    def create(email, event_id, notes = nil, first_name = nil, last_name = nil)
+    def create(email, event_id, notes = nil, first_name = nil, last_name = nil, activity_utc_time = nil)
       url = url_with_service("Create")
       body = {
         "EmailAddress"      => email,
         "ActivityEvent"     => event_id,
         "ActivityNote"      => notes,
-        "ActivityDateTime"  => current_utc_time,
-        "FirstName"         => first_name,
-        "LastName"          => last_name
+        "ActivityDateTime"  => activity_utc_time || current_utc_time
       }
+      body["FirstName"] = first_name if first_name
+      body["LastName"] = last_name if last_name
       response = connection.post(url, {}, body.to_json)
       parsed_response = handle_response response
       parsed_response["Message"]["Id"]
     end
 
     private
-
     def current_utc_time
-      Time.now.utc.to_s.gsub(/ UTC$/, "")
+      Time.now.utc.strftime("%Y-%m-%d %H:%M:%S")
     end
   end
 end

@@ -5,6 +5,8 @@ describe Leadsquared::Lead do
   let(:service) { '/v2/ProspectActivity.svc/' }
   let(:lead_id) { "3131ea6a-bb20-4457-b183-ddf6d8716dfe" }
   let(:email) { "test@example.com" }
+  let(:first_name) { "TestFirstName" }
+  let(:last_name) { "TestLastName" }
   let(:current_utc_time) { Time.now.utc.to_s.gsub(/ UTC$/, "") }
   subject { Leadsquared::Activity.new }
 
@@ -74,9 +76,7 @@ describe Leadsquared::Lead do
         "EmailAddress"      => email,
         "ActivityEvent"     => event_id,
         "ActivityNote"      => nil,
-        "ActivityDateTime"  => current_utc_time,
-        "FirstName"         => nil,
-        "LastName"          => nil
+        "ActivityDateTime"  => current_utc_time
       }
     end
 
@@ -101,6 +101,21 @@ describe Leadsquared::Lead do
     it "valid activity" do
       expect(mock_connection).to receive(:post).with(url, {}, body.to_json).and_return valid_response
       response = subject.create(email, event_id)
+      expect(response).to eq(id)
+    end
+    
+    it "valid activity with firstname and lastname" do
+      body.merge!("FirstName" => first_name, "LastName" => last_name)
+      expect(mock_connection).to receive(:post).with(url, {}, body.to_json).and_return valid_response
+      response = subject.create(email, event_id, nil, first_name, last_name)
+      expect(response).to eq(id)
+    end
+
+    it "valid activity with activity time" do
+      activity_time = '2015-06-28 08:57:34'
+      body.merge!("ActivityDateTime" => activity_time)
+      expect(mock_connection).to receive(:post).with(url, {}, body.to_json).and_return valid_response
+      response = subject.create(email, event_id, nil, nil, nil, activity_time)
       expect(response).to eq(id)
     end
   end
@@ -142,6 +157,13 @@ describe Leadsquared::Lead do
       response = subject.create_lead_activity(lead_id, event_id, notes)
       expect(response).to eq(id)
     end
-  end
 
+    it "valid activity with custom activity time" do
+      activity_time = '2015-06-28 08:57:34'
+      body.merge!("ActivityNote" => nil, "ActivityDateTime" => activity_time)
+      expect(mock_connection).to receive(:post).with(url, {leadId: lead_id}, body.to_json).and_return valid_response
+      response = subject.create_lead_activity(lead_id, event_id, nil, activity_time)
+      expect(response).to eq(id)
+    end
+  end
 end
