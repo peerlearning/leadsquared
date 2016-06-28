@@ -64,8 +64,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<timecop>, [">= 0"])
       s.add_development_dependency(%q<codeclimate-test-reporter>, [">= 0"])
     else
-      s.add_dependency(%q<activesupport>, ["~> 4.0"])
-      s.add_dependency(%q<faraday>, ["~> 0.9.2"])
+      s.add_dependency(%q<activesupport>, ["~> 3.0"])
+      s.add_dependency(%q<faraday>, ["~> 0.9.0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<rdoc>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
