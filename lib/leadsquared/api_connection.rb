@@ -15,14 +15,8 @@ module Leadsquared
 
     def handle_response(response)
       case response.status
-      when 200
+      when 200..499
         return JSON.parse response.body
-      when 400
-        raise InvalidRequestError.new("Bad Request")
-      when 401
-        raise InvalidRequestError.new("Unauthorized Request")
-      when 404
-        raise InvalidRequestError.new("API Not Found")
       when 500
         message = response.body #.try(:[],  "ExceptionMessage")
         raise InvalidRequestError.new("Internal Error: #{message}")
@@ -30,6 +24,5 @@ module Leadsquared
         raise InvalidRequestError.new("Unknown Error#{response.body}")
       end
     end
-
   end
 end
