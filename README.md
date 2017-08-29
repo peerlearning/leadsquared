@@ -25,6 +25,10 @@ end
 
 This version implements only [LeadManagement](http://apidocs.leadsquared.com/meta-data/) and [ActivityManagement](http://apidocs.leadsquared.com/get-activities-of-a-lead/)
 
+## Change log
+### 0.4.4
+* Added Capture Lead API [Capture Lead](http://apidocs.leadsquared.com/capture-lead/)
+
 ## Contributing to leadsquared
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.

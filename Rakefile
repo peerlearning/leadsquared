@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{Ruby framework for integration with Leadsquared API}
   gem.description = %Q{Ruby framework for integration with Leadsquared. Leadsquared API: http://apidocs.leadsquared.com/}
   gem.email = "dpaluy@gmail.com"
-  gem.authors = ["David Paluy"]
+  gem.authors = ["David Paluy", "Yashpal Meena"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
