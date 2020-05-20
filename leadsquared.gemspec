@@ -52,7 +52,7 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<activesupport>.freeze, ["~> 4.0"])
+      s.add_runtime_dependency(%q<activesupport>.freeze, ["5.2.4.3"])
       s.add_runtime_dependency(%q<faraday>.freeze, ["~> 0.9.2"])
       s.add_development_dependency(%q<rspec>.freeze, [">= 0"])
       s.add_development_dependency(%q<rdoc>.freeze, [">= 0"])
@@ -64,7 +64,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<timecop>.freeze, [">= 0"])
       s.add_development_dependency(%q<codeclimate-test-reporter>.freeze, [">= 0"])
     else
-      s.add_dependency(%q<activesupport>.freeze, ["~> 4.0"])
+      s.add_dependency(%q<activesupport>.freeze, ["5.2.4.3"])
       s.add_dependency(%q<faraday>.freeze, ["~> 0.9.2"])
       s.add_dependency(%q<rspec>.freeze, [">= 0"])
       s.add_dependency(%q<rdoc>.freeze, [">= 0"])
@@ -77,7 +77,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<codeclimate-test-reporter>.freeze, [">= 0"])
     end
   else
-    s.add_dependency(%q<activesupport>.freeze, ["~> 4.0"])
+    s.add_dependency(%q<activesupport>.freeze, ["5.2.4.3"])
     s.add_dependency(%q<faraday>.freeze, ["~> 0.9.2"])
     s.add_dependency(%q<rspec>.freeze, [">= 0"])
     s.add_dependency(%q<rdoc>.freeze, [">= 0"])
